@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Survey</title>
+  </head>
+  <body>
+    <div id="survey">
+      <div id="question-1">
+        <h1>Question 1</h1>
+        <p>What is your name?</p>
+        <input type="text" id="name">
+        <button onclick="showQuestion(2)">Next</button>
+      </div>
+      <div id="question-2" style="display:none">
+        <h1>Question 2</h1>
+        <p>What is your age?</p>
+        <input type="number" id="age">
+        <button onclick="showQuestion(3)">Next</button>
+      </div>
+      <!-- Repeat for the remaining questions -->
+      <div id="question-15" style="display:none">
+        <h1>Question 15</h1>
+        <p>What is your favorite color?</p>
+        <select id="color">
+          <option value="">Select one</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+        </select>
+        <button onclick="submitSurvey()">Submit</button>
+      </div>
+    </div>
+    
+    <script>
+      function showQuestion(questionNumber) {
+        // Hide the current question
+        var currentQuestion = document.getElementById('question-' + (questionNumber - 1));
+        currentQuestion.style.display = 'none';
+        
+        // Show the next question
+        var nextQuestion = document.getElementById('question-' + questionNumber);
+        nextQuestion.style.display = 'block';
+      }
+      
+      function submitSurvey() {
+        // Collect the user's responses
+        var name = document.getElementById('name').value;
+        var age = document.getElementById('age').value;
+        var color = document.getElementById('color').value;
+        
+        // Do something with the responses, such as send them to a server using AJAX or display them on the page
+        // For example:
+        var surveyResults = document.createElement('div');
+        surveyResults.innerHTML = 'Name: ' + name + '<br>Age: ' + age + '<br>Favorite color: ' + color;
+        document.body.appendChild(surveyResults);
+        
+        // Hide the survey questions
+        var survey = document.getElementById('survey');
+        survey.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
