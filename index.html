@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3868895_54thcc7ei4p.css">
+    <!-- <link rel="stylesheet" href="./dist/output.css"> -->
 </head>
+
 <body>
     <div class="header">
         <div class="container">
-            <h2 class="welcome-mgs">Welcome to Your Personality Survey</h2>
+            <div class="welcome-mgs">
+                <h2>Welcome to Your <br> Personality Survey</h2>
+                <h4>See how your future works here.</h4>
+            </div>
             <form class="personal-form">
                 <div class="form-item">
                     <input name='username' type="text" placeholder="Your Name" autocomplete="off">
@@ -20,21 +26,60 @@
                     <input name='email' type="text" placeholder="Your Email" autocomplete="off">
                 </div>
                 <div class="form-item">
-                    <input name='gender' type="text" placeholder="Please select" autocomplete="off">
+                    <input list='school-list' name='gender' type="text" placeholder="Please select your school"
+                        autocomplete="off">
+                    <datalist id="school-list">
+                        <option value="school 1">
+                        <option value="school 2">
+                        <option value="school 3">
+                        <option value="school 4">
+                        <option value="school 5">
+                        <option value="school 6">
+                        <option value="school 7">
+                        <option value="school 8">
+                    </datalist>
                 </div>
                 <div class="form-item">
-                    <input name='password' type="text" placeholder="Please enter your password" autocomplete="off">
+                    <input class='password' name='password' id='password' type="password"
+                        placeholder="Please enter your password" autocomplete="off">
+                    <span class="toggle-password">👁️</span>
                 </div>
                 <div class="form-item">
-                    <input name='confirm' type="text" placeholder="Please confirm your password" autocomplete="off">
+                    <input class='password' name='confirm' id='password' type="password"
+                        placeholder="Please confirm your password" autocomplete="off">
+                    <span class="toggle-password">👁️</span>
                 </div>
                 <div class="form-policy">
                     <i class="iconfont icon-quhe-icon_gouxuan"></i>
                     &nbsp I've read and agree to &nbsp<i>the User Service Agreement</i>
                 </div>
+
             </form>
         </div>
     </div>
 </body>
-</html>
 
+<script>
+    const toggles = document.querySelectorAll(".toggle-password")
+    toggles.forEach(text => {
+        text.addEventListener('click', () => {
+            const password = document.querySelectorAll('.password')
+
+            password.forEach(text1 => {
+                if (text1.type === 'password') {
+                    text1.type = 'text';
+                    toggles.textContent = '👁️'
+                    // console.log(111);
+                } else {
+                    text1.type = 'password'
+                    toggles.textContent = '👁️'
+                }
+            })
+            // console.log(111);
+        })
+    })
+
+
+</script>
+
+</html>
